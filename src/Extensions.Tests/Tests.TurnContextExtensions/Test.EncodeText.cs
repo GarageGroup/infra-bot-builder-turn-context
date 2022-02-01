@@ -71,8 +71,6 @@ partial class TurnContextExtensionsTest
     [Theory]
     [InlineData(Channels.Telegram, EmptyString)]
     [InlineData(Channels.Telegram, "Some string")]
-    [InlineData("Telegram", "Строка с __комментами__ **жирныйш шрифт**, \"\"две кавычки\"\"")]
-    [InlineData("TELEGRAM", "Строка с __комментами__ **жирныйш шрифт**, \"\"две кавычки\"\"")]
     public void EncodeText_SourceTextNotContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectSourceString(string channelId, string source)
     {
         var turnContext = CreateStubTurnContext(new()
@@ -91,6 +89,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Telegram, TargetTextMessageWithDangerousSymbolsInHeader, EncodedTextMessageWithDangerousSymbolsInHeader)]
     [InlineData("TELEGRAM", TargetTextMessageWithBrackets, EncodedTextMessageWithBrackets)]
     [InlineData(Channels.Telegram, TargetTextMessageWithAllDangerousSymbols, EncodedTextMessageWithAllDangerousSymbols)]
+    [InlineData(Channels.Telegram, TargetTextMessageWithNewDangerousSymbols, EncodedTextMessageWithNewDangerousSymbols)]
     [InlineData("TELEGRAM", "\n\n\n", "\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063")]
     [InlineData("Telegram", "usual \"string\"", "usual \"string\"")]
     [InlineData("Telegram", @"\\\\\\\\\", EmptyString)]
