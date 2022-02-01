@@ -9,11 +9,10 @@ public static partial class TurnContextExtensions
 
     static TurnContextExtensions()
         =>
-        RegexReplacement = new Dictionary<Regex,string>()
+        RegexReplacement = new KeyValuePair<Regex, string>[]
         {
-            [new("(?<!\\r)(\\n)(?!\\r)", RegexOptions.CultureInvariant)] = "\u2063\n\r\n\r\u2063",
-            [new(@"\\(?!n|r|"")", RegexOptions.CultureInvariant)] = string.Empty,
-            [new(@"\[", RegexOptions.CultureInvariant)] = "(",
-            [new(@"\]", RegexOptions.CultureInvariant)] = ")"
+            new(new(@"[^a-zA-Zа-яА-Я0-9\.,\-\?!\s:;()\\n\\r\\\""']+", RegexOptions.CultureInvariant), string.Empty),
+            new(new("(?<!\\r)(\\n)(?!\\r)", RegexOptions.CultureInvariant), "\u2063\n\r\n\r\u2063"),
+            new(new(@"\\(?!n|r|"")", RegexOptions.CultureInvariant), string.Empty)
         };
 }
