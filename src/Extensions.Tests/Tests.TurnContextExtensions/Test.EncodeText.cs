@@ -96,6 +96,7 @@ partial class TurnContextExtensionsTest
     [InlineData("Telegram", "usual \"string\"", "usual \"string\"")]
     [InlineData("Telegram", @"\\\\\\\\\", EmptyString)]
     [InlineData(Channels.Telegram, @"\", EmptyString)]
+    [InlineData(Channels.Telegram, @"Ggroupp-Project", "Ggroupp\\-Project")]
     public void EncodeText_SourceTextContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectEncodedString(string channelId, string source, string expected)
     {
         var turnContext = CreateStubTurnContext(new()
