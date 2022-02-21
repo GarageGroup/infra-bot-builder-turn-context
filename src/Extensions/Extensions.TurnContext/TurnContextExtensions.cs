@@ -14,6 +14,6 @@ public static partial class TurnContextExtensions
             new(new(@"[^a-zA-Zа-яА-ЯёЁ0-9\.\-,\?!\s:;()\\n\\r\\\""']+", RegexOptions.CultureInvariant), string.Empty),
             new(new("(?<!\\r)(\\n)(?!\\r)", RegexOptions.CultureInvariant), "\u2063\n\r\n\r\u2063"),
             new(new(@"\\(?!n|r|"")", RegexOptions.CultureInvariant), string.Empty),
-            new(new(@"\-", RegexOptions.CultureInvariant), "\\-")
+            new(new(@"(\-|\!|\(|\)|\.)", RegexOptions.CultureInvariant), @"\$1")
         };
 }

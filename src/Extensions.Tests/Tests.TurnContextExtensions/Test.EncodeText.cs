@@ -92,6 +92,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Telegram, TargetTextMessageWithNewDangerousSymbols, EncodedTextMessageWithNewDangerousSymbols)]
     [InlineData(Channels.Telegram, TargetTextMessageWithEWhithDots, EncodedTextMessageWithEWhithDots)]
     [InlineData(Channels.Telegram, TargetTextMessageWithEEEeee, EncodedTextMessageWithEEEeee)]
+    [InlineData(Channels.Telegram, TargetTextBoldMessage, EncodedTextBoldMessage)]
     [InlineData("TELEGRAM", "\n\n\n", "\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063")]
     [InlineData("Telegram", "usual \"string\"", "usual \"string\"")]
     [InlineData("Telegram", @"\\\\\\\\\", EmptyString)]

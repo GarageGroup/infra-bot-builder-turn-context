@@ -10,7 +10,7 @@ internal static class ActivityTextTestData
         "Мультимодальная\n- Карго\nПо умолчанию = Море\n";
 
     public const string EncodedTargetTextMessage =
-        "Заголовок: В Букинге требуется добавить н...\n\r\n\r" +
+        "Заголовок: В Букинге требуется добавить н\\.\\.\\.\n\r\n\r" +
         "Клиент: Детский мир 13299\n\r\n\rТип обращения: Запрос" +
         "\n\r\n\rОписание: В Букинге требуется добавить новое поле" +
         " \"Типы поставок\" с выбором:\u2063\n\r\n\r\u2063\\- Море\u2063\n\r\n\r\u2063\\- " +
@@ -26,7 +26,7 @@ internal static class ActivityTextTestData
         "Мультимодальная\n- Карго\nПо умолчанию\n\n\n\n\n\n = Море\n";
 
     public const string EncodedTargetTextMessageWithALotOfNewLines =
-        "Заголовок: В Букинге требуется добавить н...\n\r\n\r" +
+        "Заголовок: В Букинге требуется добавить н\\.\\.\\.\n\r\n\r" +
         "Клиент: Детский мир 13299\n\r\n\rТип обращения: Запрос" +
         "\n\r\n\rОписание: В Букинге требуется добавить новое поле" +
         " \"Типы поставок\" с выбором:\u2063\n\r\n\r\u2063\\- Море\u2063\n\r\n\r\u2063" +
@@ -67,15 +67,15 @@ internal static class ActivityTextTestData
 
     public const string EncodedTextMessageWithAllDangerousSymbols =
         "Заголовок: 'Одинарные кавычки'\n\r\n\rКлиент: Тинькофф Банк 25641" +
-        "\n\r\n\rТип обращения: Запрос\n\r\n\rОписание: 'Одинарные'!" +
-        "()\\-\u2063\n\r\n\r\u2063several sqare\u2063\n\r\n\r\u2063" +
+        "\n\r\n\rТип обращения: Запрос\n\r\n\rОписание: 'Одинарные'\\!" +
+        "\\(\\)\\-\u2063\n\r\n\r\u2063several sqare\u2063\n\r\n\r\u2063" +
         "ab\u2063\n\r\n\r\u2063ab\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063";
 
     public const string TargetTextMessageWithNewDangerousSymbols =
         "/,*?%№;\"1№4277?:83*!:№\"! ?: \";(*%)_№(№750(*...,,/\\";
 
     public const string EncodedTextMessageWithNewDangerousSymbols =
-        ",?;\"14277?:83!:\"! ?: \";()(750(...,,";
+        ",?;\"14277?:83\\!:\"\\! ?: \";\\(\\)\\(750\\(\\.\\.\\.,,";
 
     public const string TargetTextMessageWithEWhithDots =
         "Отчёт план/факт";
@@ -88,4 +88,10 @@ internal static class ActivityTextTestData
 
     public const string EncodedTextMessageWithEEEeee =
         "ЁЁЁёёё";
+
+    public const string TargetTextBoldMessage =
+        "G-sup!po.r(t)";
+
+    public const string EncodedTextBoldMessage =
+        "G\\-sup\\!po\\.r\\(t\\)";
 }
