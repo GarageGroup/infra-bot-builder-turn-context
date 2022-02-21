@@ -92,10 +92,12 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Telegram, TargetTextMessageWithNewDangerousSymbols, EncodedTextMessageWithNewDangerousSymbols)]
     [InlineData(Channels.Telegram, TargetTextMessageWithEWhithDots, EncodedTextMessageWithEWhithDots)]
     [InlineData(Channels.Telegram, TargetTextMessageWithEEEeee, EncodedTextMessageWithEEEeee)]
+    [InlineData(Channels.Telegram, TargetTextBoldMessage, EncodedTextBoldMessage)]
     [InlineData("TELEGRAM", "\n\n\n", "\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063\u2063\n\r\n\r\u2063")]
     [InlineData("Telegram", "usual \"string\"", "usual \"string\"")]
     [InlineData("Telegram", @"\\\\\\\\\", EmptyString)]
     [InlineData(Channels.Telegram, @"\", EmptyString)]
+    [InlineData(Channels.Telegram, @"Ggroupp-Project", "Ggroupp\\-Project")]
     public void EncodeText_SourceTextContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectEncodedString(string channelId, string source, string expected)
     {
         var turnContext = CreateStubTurnContext(new()
