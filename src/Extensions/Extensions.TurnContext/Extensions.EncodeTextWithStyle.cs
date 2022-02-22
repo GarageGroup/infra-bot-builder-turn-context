@@ -20,14 +20,13 @@ public static partial class TurnContextExtensions
 
         var encodedString = source;
 
-        if (style == BotTextStyle.Default)
+        if (style is BotTextStyle.Default)
         {
             foreach (var regItem in RegexReplacementWithDefaultStyle)
             {
                 encodedString = regItem.Key.Replace(encodedString, regItem.Value);
             }
         }
-
         else 
         {
             foreach (var regItem in RegexReplacementWithSpecificStyle)
