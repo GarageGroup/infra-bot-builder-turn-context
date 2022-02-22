@@ -19,20 +19,11 @@ public static partial class TurnContextExtensions
         }
 
         var encodedString = source;
+        var replacement = style is BotTextStyle.Default ? RegexReplacementWithDefaultStyle : RegexReplacementWithSpecificStyle;
 
-        if (style is BotTextStyle.Default)
+        foreach (var regItem in replacement)
         {
-            foreach (var regItem in RegexReplacementWithDefaultStyle)
-            {
-                encodedString = regItem.Key.Replace(encodedString, regItem.Value);
-            }
-        }
-        else 
-        {
-            foreach (var regItem in RegexReplacementWithSpecificStyle)
-            {
-                encodedString = regItem.Key.Replace(encodedString, regItem.Value);
-            }
+            encodedString = regItem.Key.Replace(encodedString, regItem.Value);
         }
 
         encodedString = new(encodedString.Where(c => char.IsControl(c) is false).ToArray());
