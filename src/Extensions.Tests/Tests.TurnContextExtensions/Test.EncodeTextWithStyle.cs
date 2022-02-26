@@ -106,6 +106,8 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Telegram, @"Ggroupp-Project", "*Ggroupp\\-Project*", BotTextStyle.Italic)]
     [InlineData(Channels.Telegram, @"G**group**p-Project", "*Ggroupp\\-Project*", BotTextStyle.Italic)]
     [InlineData(Channels.Telegram, @"G__group__p-Project", "*Ggroupp\\-Project*", BotTextStyle.Italic)]
+    [InlineData(Channels.Msteams, @"G__group__p-Project", "**G__group__p-Project**", BotTextStyle.Bold)]
+    [InlineData(Channels.Emulator, @"G__group__p-Project", "*G__group__p-Project*", BotTextStyle.Italic)]
     public void EncodeTextWithStyle_SourceTextStyledAndSourceChannelIsTelegram_ExpectEncodedString(string channelId, string source, string expected, BotTextStyle style)
     {
         var turnContext = CreateStubTurnContext(new()
