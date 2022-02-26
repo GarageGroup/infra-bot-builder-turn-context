@@ -15,7 +15,7 @@ public static partial class TurnContextExtensions
 
         if (turnContext is null || turnContext.IsNotTelegramChannel())
         {
-            return source;
+            return InnerBuildTextWithStyle(source ?? string.Empty, style);
         }
 
         var encodedString = source;
@@ -27,12 +27,15 @@ public static partial class TurnContextExtensions
         }
 
         encodedString = new(encodedString.Where(c => char.IsControl(c) is false).ToArray());
-
-        return style switch
-        {
-            BotTextStyle.Bold => string.Concat(BoldStyleSign, encodedString, BoldStyleSign),
-            BotTextStyle.Italic => string.Concat(ItalicStyleSign, encodedString, ItalicStyleSign),
-            _ => encodedString
-        };
+        return InnerBuildTextWithStyle(encodedString, style);
     }
+    
+    private static string InnerBuildTextWithStyle(string text, BotTextStyle style)
+        =>
+        style switch
+        {
+            BotTextStyle.Bold => string.Concat(BoldStyleSign, text, BoldStyleSign),
+            BotTextStyle.Italic => string.Concat(ItalicStyleSign, text, ItalicStyleSign),
+            _ => text
+        };
 }
