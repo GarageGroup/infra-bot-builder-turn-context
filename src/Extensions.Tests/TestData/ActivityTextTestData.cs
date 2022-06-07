@@ -76,4 +76,16 @@ internal static class ActivityTextTestData
 
     public const string EncodedTextMessageWithNewDangerousSymbols =
         ",?;\"14277?:83!:\"! ?: \";()(750(...,,";
+
+    public const string TargetTextMessageWithEWhithDots =
+        "Отчёт план/факт";
+
+    public const string EncodedTextMessageWithEWhithDots =
+        "Отчёт планфакт";
+
+    public const string TargetTextMessageWithEEEeee =
+        "ЁЁЁёёё";
+
+    public const string EncodedTextMessageWithEEEeee =
+        "ЁЁЁёёё";
 }
