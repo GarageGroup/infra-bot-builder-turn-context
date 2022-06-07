@@ -12,16 +12,18 @@ public static partial class TurnContextExtensions
             return string.Empty;
         }
 
-        if (turnContext is null || turnContext.IsNotTelegramChannel())
+        if (turnContext.IsNotTelegramChannel())
         {
             return source;
         }
 
         var encodedString = source;
+
         foreach(var regItem in RegexReplacement)
         {
             encodedString = regItem.Key.Replace(encodedString, regItem.Value);
         }
+
         return encodedString;
     }
 }
