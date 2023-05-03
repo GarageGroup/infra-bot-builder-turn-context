@@ -7,7 +7,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class TurnContextExtensionsTest
 {
     [Fact]
-    public void IsMsteamsChannel_TurnContextIsNull_ExpectFalse()
+    public static void IsMsteamsChannel_TurnContextIsNull_ExpectFalse()
     {
         ITurnContext turnContext = null!;
 
@@ -23,7 +23,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Msteams + " ")]
     [InlineData(Channels.Telegram)]
     [InlineData(Channels.Webchat)]
-    public void IsMsteamsChannel_ChannelIdIsNotMsteams_ExpectFalse(string? channelId)
+    public static void IsMsteamsChannel_ChannelIdIsNotMsteams_ExpectFalse(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -38,7 +38,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Msteams)]
     [InlineData("MsTeams")]
     [InlineData("MSTEAMS")]
-    public void IsMsteamsChannel_ChannelIdIsMsteams_ExpectTrue(string channelId)
+    public static void IsMsteamsChannel_ChannelIdIsMsteams_ExpectTrue(string channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -50,7 +50,7 @@ partial class TurnContextExtensionsTest
     }
 
     [Fact]
-    public void IsNotMsteamsChannel_TurnContextIsNull_ExpectTrue()
+    public static void IsNotMsteamsChannel_TurnContextIsNull_ExpectTrue()
     {
         ITurnContext turnContext = null!;
 
@@ -66,7 +66,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Msteams + "\t")]
     [InlineData(Channels.Telegram)]
     [InlineData(Channels.Webchat)]
-    public void IsNotMsteamsChannel_ChannelIdIsNotMsteams_ExpectTrue(string? channelId)
+    public static void IsNotMsteamsChannel_ChannelIdIsNotMsteams_ExpectTrue(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -81,7 +81,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Msteams)]
     [InlineData("MsTeams")]
     [InlineData("MSTEAMS")]
-    public void IsNotMsteamsChannel_ChannelIdIsMsteams_ExpectFalse(string channelId)
+    public static void IsNotMsteamsChannel_ChannelIdIsMsteams_ExpectFalse(string channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {

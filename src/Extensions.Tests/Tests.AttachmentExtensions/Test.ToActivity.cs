@@ -7,7 +7,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class AttachmentExtensionsTest
 {
     [Fact]
-    public void ToActivity_AttachmentIsNull_ExpectArgumentNullException()
+    public static void ToActivity_AttachmentIsNull_ExpectArgumentNullException()
     {
         Attachment attachment = null!;
 
@@ -16,7 +16,7 @@ partial class AttachmentExtensionsTest
     }
 
     [Fact]
-    public void ToActivity_AttachmentIsNotNull_ExpectActivityWithSourceAttachement()
+    public static void ToActivity_AttachmentIsNotNull_ExpectActivityWithSourceAttachement()
     {
         var attachment = new Attachment();
 

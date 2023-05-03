@@ -7,7 +7,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class TurnContextExtensionsTest
 {
     [Fact]
-    public void IsWebchatChannel_TurnContextIsNull_ExpectFalse()
+    public static void IsWebchatChannel_TurnContextIsNull_ExpectFalse()
     {
         ITurnContext turnContext = null!;
 
@@ -23,7 +23,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Webchat + " ")]
     [InlineData(Channels.Msteams)]
     [InlineData(Channels.Telegram)]
-    public void IsWebchatChannel_ChannelIdIsNotWebchat_ExpectFalse(string? channelId)
+    public static void IsWebchatChannel_ChannelIdIsNotWebchat_ExpectFalse(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -38,7 +38,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Webchat)]
     [InlineData("WebChat")]
     [InlineData("WEBCHAT")]
-    public void IsWebchatChannel_ChannelIdIsWebchat_ExpectTrue(string channelId)
+    public static void IsWebchatChannel_ChannelIdIsWebchat_ExpectTrue(string channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -50,7 +50,7 @@ partial class TurnContextExtensionsTest
     }
 
     [Fact]
-    public void IsNotWebchatChannel_TurnContextIsNull_ExpectTrue()
+    public static void IsNotWebchatChannel_TurnContextIsNull_ExpectTrue()
     {
         ITurnContext turnContext = null!;
 
@@ -66,7 +66,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Webchat + "\t")]
     [InlineData(Channels.Msteams)]
     [InlineData(Channels.Telegram)]
-    public void IsNotWebchatChannel_ChannelIdIsNotWebchat_ExpectTrue(string? channelId)
+    public static void IsNotWebchatChannel_ChannelIdIsNotWebchat_ExpectTrue(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -81,7 +81,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Webchat)]
     [InlineData("WebChat")]
     [InlineData("WEBCHAT")]
-    public void IsNotWebchatChannel_ChannelIdIsWebchat_ExpectFalse(string channelId)
+    public static void IsNotWebchatChannel_ChannelIdIsWebchat_ExpectFalse(string channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
