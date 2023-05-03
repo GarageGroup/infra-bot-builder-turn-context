@@ -8,7 +8,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class TurnContextExtensionsTest
 {
     [Fact]
-    public void EncodeText_TurnContextIsNullAndSourceTextIsNull_ExpectEmptyString()
+    public static void EncodeText_TurnContextIsNullAndSourceTextIsNull_ExpectEmptyString()
     {
         ITurnContext turnContext = null!;
 
@@ -21,7 +21,7 @@ partial class TurnContextExtensionsTest
     [InlineData("Some text")]
     [InlineData(TargetTextMessageWithALotOfNewLines)]
     [InlineData("Строка с __комментами__ **жирныйш шрифт**, \"\"две кавычки\"\"")]
-    public void EncodeText_TurnContextIsNullAndSourceTextIsNotNull_ExpectSourceText(string source)
+    public static void EncodeText_TurnContextIsNullAndSourceTextIsNotNull_ExpectSourceText(string source)
     {
         ITurnContext turnContext = null!;
 
@@ -39,7 +39,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Telegram)]
     [InlineData("Telegram")]
     [InlineData("TELEGRAM")]
-    public void EncodeText_SourceTextIsNull_ExpectEmptyString(string? channelId)
+    public static void EncodeText_SourceTextIsNull_ExpectEmptyString(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -57,7 +57,8 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Emulator, "\n\n\n")]
     [InlineData(Channels.Webchat, "usual \"string\"")]
     [InlineData(Channels.Msteams, EmptyString)]
-    public void EncodeText_SourceTextIsNotNullAndSourceChannelIsNotTelegram_ExpectSourceString(string? channelId, string source)
+    public static void EncodeText_SourceTextIsNotNullAndSourceChannelIsNotTelegram_ExpectSourceString(
+        string? channelId, string source)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -71,7 +72,8 @@ partial class TurnContextExtensionsTest
     [Theory]
     [InlineData(Channels.Telegram, EmptyString)]
     [InlineData(Channels.Telegram, "Some string")]
-    public void EncodeText_SourceTextNotContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectSourceString(string channelId, string source)
+    public static void EncodeText_SourceTextNotContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectSourceString(
+        string channelId, string source)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -96,7 +98,8 @@ partial class TurnContextExtensionsTest
     [InlineData("Telegram", "usual \"string\"", "usual \"string\"")]
     [InlineData("Telegram", @"\\\\\\\\\", EmptyString)]
     [InlineData(Channels.Telegram, @"\", EmptyString)]
-    public void EncodeText_SourceTextContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectEncodedString(string channelId, string source, string expected)
+    public static void EncodeText_SourceTextContainsWrongSymbolsAndSourceChannelIsTelegram_ExpectEncodedString(
+        string channelId, string source, string expected)
     {
         var turnContext = CreateStubTurnContext(new()
         {

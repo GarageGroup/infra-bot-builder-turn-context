@@ -7,7 +7,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class TurnContextExtensionsTest
 {
     [Fact]
-    public void IsMessageType_TurnContextIsNull_ExpectFalse()
+    public static void IsMessageType_TurnContextIsNull_ExpectFalse()
     {
         ITurnContext turnContext = null!;
 
@@ -19,7 +19,7 @@ partial class TurnContextExtensionsTest
     [InlineData(null)]
     [InlineData(EmptyString)]
     [InlineData("Message0")]
-    public void IsMessageType_ActivityTypeIsNotMessage_ExpectFalse(string? activityType)
+    public static void IsMessageType_ActivityTypeIsNotMessage_ExpectFalse(string? activityType)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -34,7 +34,7 @@ partial class TurnContextExtensionsTest
     [InlineData(ActivityTypes.Message)]
     [InlineData("Message")]
     [InlineData("MESSAGE")]
-    public void IsMessageType_ActivityTypeIsMessage_ExpectTrue(string activityType)
+    public static void IsMessageType_ActivityTypeIsMessage_ExpectTrue(string activityType)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -46,7 +46,7 @@ partial class TurnContextExtensionsTest
     }
 
     [Fact]
-    public void IsNotMessageType_TurnContextIsNull_ExpectTrue()
+    public static void IsNotMessageType_TurnContextIsNull_ExpectTrue()
     {
         ITurnContext turnContext = null!;
 
@@ -58,7 +58,7 @@ partial class TurnContextExtensionsTest
     [InlineData(null)]
     [InlineData(EmptyString)]
     [InlineData("Message0")]
-    public void IsNotMessageType_ChannelIdIsNotEmulator_ExpectTrue(string? activityType)
+    public static void IsNotMessageType_ChannelIdIsNotEmulator_ExpectTrue(string? activityType)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -73,7 +73,7 @@ partial class TurnContextExtensionsTest
     [InlineData(ActivityTypes.Message)]
     [InlineData("Message")]
     [InlineData("MESSAGE")]
-    public void IsNotMessageType_ChannelIdIsEmulator_ExpectFalse(string activityType)
+    public static void IsNotMessageType_ChannelIdIsEmulator_ExpectFalse(string activityType)
     {
         var turnContext = CreateStubTurnContext(new()
         {

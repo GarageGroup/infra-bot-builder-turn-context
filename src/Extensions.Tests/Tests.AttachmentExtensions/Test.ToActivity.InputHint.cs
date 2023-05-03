@@ -7,7 +7,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class AttachmentExtensionsTest
 {
     [Fact]
-    public void ToActivityWithInputHint_AttachmentIsNull_ExpectArgumentNullException()
+    public static void ToActivityWithInputHint_AttachmentIsNull_ExpectArgumentNullException()
     {
         Attachment attachment = null!;
 
@@ -19,7 +19,7 @@ partial class AttachmentExtensionsTest
     [InlineData(null)]
     [InlineData(EmptyString)]
     [InlineData("Some hint")]
-    public void ToActivityWithInputHint_AttachmentIsNotNull_ExpectActivityWithSourceAttachement(string? hint)
+    public static void ToActivityWithInputHint_AttachmentIsNotNull_ExpectActivityWithSourceAttachement(string? hint)
     {
         var attachment = new Attachment();
 
@@ -33,7 +33,7 @@ partial class AttachmentExtensionsTest
     [InlineData(null, EmptyString)]
     [InlineData(EmptyString, EmptyString)]
     [InlineData("Some hint", "Some hint")]
-    public void ToActivityWithInputHint_AttachmentIsNotNull_ExpectActivityWithExpectedHint(string? sourceHint, string expectedHint)
+    public static void ToActivityWithInputHint_AttachmentIsNotNull_ExpectActivityWithExpectedHint(string? sourceHint, string expectedHint)
     {
         var attachment = new Attachment();
 

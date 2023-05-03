@@ -7,7 +7,7 @@ namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 partial class TurnContextExtensionsTest
 {
     [Fact]
-    public void IsEmulatorChannel_TurnContextIsNull_ExpectFalse()
+    public static void IsEmulatorChannel_TurnContextIsNull_ExpectFalse()
     {
         ITurnContext turnContext = null!;
 
@@ -23,7 +23,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Emulator + " ")]
     [InlineData(Channels.Telegram)]
     [InlineData(Channels.Webchat)]
-    public void IsEmulatorChannel_ChannelIdIsNotEmulator_ExpectFalse(string? channelId)
+    public static void IsEmulatorChannel_ChannelIdIsNotEmulator_ExpectFalse(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -38,7 +38,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Emulator)]
     [InlineData("Emulator")]
     [InlineData("EMULATOR")]
-    public void IsEmulatorChannel_ChannelIdIsEmulator_ExpectTrue(string channelId)
+    public static void IsEmulatorChannel_ChannelIdIsEmulator_ExpectTrue(string channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -50,7 +50,7 @@ partial class TurnContextExtensionsTest
     }
 
     [Fact]
-    public void IsNotEmulatorChannel_TurnContextIsNull_ExpectTrue()
+    public static void IsNotEmulatorChannel_TurnContextIsNull_ExpectTrue()
     {
         ITurnContext turnContext = null!;
 
@@ -66,7 +66,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Emulator + "\t")]
     [InlineData(Channels.Telegram)]
     [InlineData(Channels.Webchat)]
-    public void IsNotEmulatorChannel_ChannelIdIsNotEmulator_ExpectTrue(string? channelId)
+    public static void IsNotEmulatorChannel_ChannelIdIsNotEmulator_ExpectTrue(string? channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
@@ -81,7 +81,7 @@ partial class TurnContextExtensionsTest
     [InlineData(Channels.Emulator)]
     [InlineData("Emulator")]
     [InlineData("EMULATOR")]
-    public void IsNotEmulatorChannel_ChannelIdIsEmulator_ExpectFalse(string channelId)
+    public static void IsNotEmulatorChannel_ChannelIdIsEmulator_ExpectFalse(string channelId)
     {
         var turnContext = CreateStubTurnContext(new()
         {
