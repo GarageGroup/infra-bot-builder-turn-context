@@ -7,7 +7,7 @@ using Microsoft.Bot.Schema;
 using Moq;
 using Xunit;
 
-namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
+namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 
 partial class TurnContextExtensionsTest
 {

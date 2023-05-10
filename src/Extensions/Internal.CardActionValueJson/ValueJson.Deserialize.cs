@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GGroupp.Infra.Bot.Builder;
+namespace GarageGroup.Infra.Bot.Builder;
 
 internal sealed partial class CardActionValueJson
 {

@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.Bot.Builder;
 
-namespace GGroupp.Infra.Bot.Builder;
+namespace GarageGroup.Infra.Bot.Builder;
 
 partial class TurnContextExtensions
 {
