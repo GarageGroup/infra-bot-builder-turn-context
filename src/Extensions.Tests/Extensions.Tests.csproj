@@ -6,8 +6,8 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <IsPackable>false</IsPackable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <RootNamespace>GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests</RootNamespace>
-    <AssemblyName>GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests</AssemblyName>
+    <RootNamespace>GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests</RootNamespace>
+    <AssemblyName>GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-namespace GGroupp.Infra.Bot.Builder.TurnContext.Extensions.Tests;
+namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests;
 
 internal static class ActivityTextTestData
 {
