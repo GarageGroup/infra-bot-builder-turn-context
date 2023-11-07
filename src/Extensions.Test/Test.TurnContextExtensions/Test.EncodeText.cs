@@ -1,9 +1,9 @@
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Connector;
 using Xunit;
-using static GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests.ActivityTextTestData;
+using static GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Test.ActivityTextTestData;
 
-namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests;
+namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Test;
 
 partial class TurnContextExtensionsTest
 {

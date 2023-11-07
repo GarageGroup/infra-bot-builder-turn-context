@@ -8,12 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.0.x'
+        dotnet-version: '8.0.x'
 
     # Add NuGet Sources
 
@@ -23,9 +24,9 @@ jobs:
     - name: Add Local Nuget Source
       run: dotnet nuget add source ~/nuget
 
-    - name: Add GGroupp NuGet Source
+    - name: Add Garage Group NuGet Source
       run: >
-        dotnet nuget add source ${{ secrets.GG_NUGET_SOURCE_URL }}
+        dotnet nuget add source ${{ vars.GG_NUGET_SOURCE_URL }}
         -n ggroupp
         -u ${{ secrets.GG_NUGET_SOURCE_USER_NAME }}
         -p ${{ secrets.GG_NUGET_SOURCE_USER_PASSWORD }}
@@ -42,13 +43,13 @@ jobs:
     - name: Pack Extensions.csproj
       run: dotnet pack ./src/*/Extensions.csproj --no-restore -o ~/nuget  -c Release
 
-    # Extensions.Tests.csproj
+    # Extensions.Test.csproj
 
-    - name: Restore Extensions.Tests.csproj
-      run: dotnet restore ./src/*/Extensions.Tests.csproj
+    - name: Restore Extensions.Test.csproj
+      run: dotnet restore ./src/*/Extensions.Test.csproj
 
-    - name: Test Extensions.Tests.csproj
-      run: dotnet test ./src/*/Extensions.Tests.csproj --no-restore  -c Release
+    - name: Test Extensions.Test.csproj
+      run: dotnet test ./src/*/Extensions.Test.csproj --no-restore  -c Release
 
     # Push
 
@@ -56,6 +57,6 @@ jobs:
       if: ${{ github.ref == 'refs/heads/main' }}
       run: >
         dotnet nuget push "../../../nuget/*.nupkg"
-        -s ${{ secrets.GG_NUGET_SOURCE_URL }}
+        -s ${{ vars.GG_NUGET_SOURCE_URL }}
         -k ${{ secrets.GG_NUGET_SOURCE_USER_PASSWORD }}
         --skip-duplicate
