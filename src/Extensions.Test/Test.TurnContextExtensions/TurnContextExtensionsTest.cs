@@ -4,7 +4,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Moq;
 
-namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Tests;
+namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Test;
 
 public static partial class TurnContextExtensionsTest
 {
