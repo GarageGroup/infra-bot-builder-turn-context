@@ -24,7 +24,7 @@ partial class AttachmentExtensionsTest
         var attachment = new Attachment();
 
         var actual = attachment.ToActivity(hint);
-        var expected = new[] { attachment };
+        Attachment[] expected = [attachment];
 
         Assert.Equal(expected, actual.Attachments);
     }

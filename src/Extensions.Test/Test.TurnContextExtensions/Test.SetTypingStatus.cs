@@ -6,6 +6,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Moq;
 using Xunit;
+using static PrimeFuncPack.UnitTest.TestData;
 
 namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Test;
 

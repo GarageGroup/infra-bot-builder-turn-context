@@ -5,7 +5,7 @@ using static System.FormattableString;
 
 namespace GarageGroup.Infra.Bot.Builder;
 
-internal sealed partial class CardActionValueJson
+internal sealed partial class CardActionValueJson(Guid id)
 {
     private const string IdPropertyName = "valueId";
 
@@ -23,8 +23,6 @@ internal sealed partial class CardActionValueJson
         =>
         JsonRegex = new(JsonRegexPattern, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline);
 
-    public CardActionValueJson(Guid id) => Id = id;
-
     [JsonProperty(IdPropertyName)]
-    public Guid Id { get; }
+    public Guid Id { get; } = id;
 }

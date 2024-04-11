@@ -2,6 +2,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Connector;
 using Xunit;
 using static GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Test.ActivityTextTestData;
+using static PrimeFuncPack.UnitTest.TestData;
 
 namespace GarageGroup.Infra.Bot.Builder.TurnContext.Extensions.Test;
 
