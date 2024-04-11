@@ -21,8 +21,11 @@ internal sealed partial class CardActionValueJson(Guid id)
 
     static CardActionValueJson()
         =>
-        JsonRegex = new(JsonRegexPattern, RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Multiline);
+        JsonRegex = CreateJsonRegex();
 
     [JsonProperty(IdPropertyName)]
     public Guid Id { get; } = id;
+
+    [GeneratedRegex(JsonRegexPattern, RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.CultureInvariant)]
+    private static partial Regex CreateJsonRegex();
 }
