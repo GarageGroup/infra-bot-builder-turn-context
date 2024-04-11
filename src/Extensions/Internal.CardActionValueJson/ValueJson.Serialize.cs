@@ -2,5 +2,7 @@
 
 partial class CardActionValueJson
 {
-    public string Serialize() => GetSerializationText(Id);
+    public string Serialize()
+        =>
+        GetSerializationText(Id);
 }

@@ -18,21 +18,36 @@ public static partial class TurnContextExtensions
 
     static TurnContextExtensions()
     {
-        RegexReplacement = new KeyValuePair<Regex, string>[]
-        {
-            new(new(@"[^a-zA-Zа-яА-ЯёЁ0-9\.\-,\?!\s:;()\\n\\r\\\""']+", RegexOptions.CultureInvariant), string.Empty),
-            new(new("(?<!\\r)(\\n)(?!\\r)", RegexOptions.CultureInvariant), "\u2063\n\r\n\r\u2063"),
-            new(new(@"\\(?!n|r|"")", RegexOptions.CultureInvariant), string.Empty)
-        };
+        RegexReplacement =
+        [
+            new(CreateFirstRegexReplacement(), string.Empty),
+            new(CreateSecondRegexReplacement(), "\u2063\n\r\n\r\u2063"),
+            new(CreateThirdRegexReplacement(), string.Empty)
+        ];
 
-        RegexReplacementWithDefaultStyle = RegexReplacement.Union(new KeyValuePair<Regex, string>[]
-        {
-            new(new(@"(\-|\!|\(|\)|\.)", RegexOptions.CultureInvariant), @"\\\$1")
-        }).ToArray();
+        RegexReplacementWithDefaultStyle = RegexReplacement.Union(
+        [
+            new(CreateReplacementWithDefaultStyleRegex(), @"\\\$1")
+        ]).ToArray();
 
-        RegexReplacementWithSpecificStyle = RegexReplacement.Union(new KeyValuePair<Regex, string>[]
-        {
-            new(new(@"(\-|\!|\(|\)|\.)", RegexOptions.CultureInvariant), @"\$1")
-        }).ToArray();
+        RegexReplacementWithSpecificStyle = RegexReplacement.Union(
+        [
+            new(CreateReplacementWithSpecificStyleRegex(), @"\$1")
+        ]).ToArray();
     }
+
+    [GeneratedRegex(@"[^a-zA-Zа-яА-ЯёЁ0-9\.\-,\?!\s:;()\\n\\r\\\""']+", RegexOptions.CultureInvariant)]
+    private static partial Regex CreateFirstRegexReplacement();
+
+    [GeneratedRegex("(?<!\\r)(\\n)(?!\\r)", RegexOptions.CultureInvariant)]
+    private static partial Regex CreateSecondRegexReplacement();
+
+    [GeneratedRegex(@"\\(?!n|r|"")", RegexOptions.CultureInvariant)]
+    private static partial Regex CreateThirdRegexReplacement();
+
+    [GeneratedRegex(@"(\-|\!|\(|\)|\.)", RegexOptions.CultureInvariant)]
+    private static partial Regex CreateReplacementWithDefaultStyleRegex();
+
+    [GeneratedRegex(@"(\-|\!|\(|\)|\.)", RegexOptions.CultureInvariant)]
+    private static partial Regex CreateReplacementWithSpecificStyleRegex();
 }
