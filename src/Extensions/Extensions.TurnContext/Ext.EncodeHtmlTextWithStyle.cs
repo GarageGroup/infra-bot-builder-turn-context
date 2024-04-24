@@ -15,19 +15,16 @@ public static partial class TurnContextExtensions
 
         if (turnContext is null || turnContext.IsNotTelegramChannel())
         {
-            return InnerBuildTextWithStyle(source ?? string.Empty, style);
+            return InnerBuildTextWithStyle(source, style);
         }
 
-        var encodedString = HttpUtility.HtmlEncode(source ?? string.Empty);
-        return InnerBuildHtmlTextWithStyle(encodedString, style);
-    }
+        var encodedString = HttpUtility.HtmlEncode(source);
 
-    private static string InnerBuildHtmlTextWithStyle(string text, BotTextStyle style)
-        =>
-        style switch
+        return style switch
         {
-            BotTextStyle.Bold => string.Concat("<b>", text, "</b>"),
-            BotTextStyle.Italic => string.Concat("<i>", text, "</i>"),
-            _ => text
+            BotTextStyle.Bold => string.Concat("<b>", encodedString, "</b>"),
+            BotTextStyle.Italic => string.Concat("<i>", encodedString, "</i>"),
+            _ => encodedString
         };
+    }
 }

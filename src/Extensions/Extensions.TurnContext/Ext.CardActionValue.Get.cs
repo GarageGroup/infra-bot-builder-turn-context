@@ -6,13 +6,25 @@ namespace GarageGroup.Infra.Bot.Builder;
 partial class TurnContextExtensions
 {
     public static Optional<Guid> GetCardActionValueOrAbsent(this ITurnContext? turnContext)
-        =>
-        turnContext.IsMessageType() ? turnContext.ParseCardActionValueOrAbsent() : default;
+    {
+        if (turnContext.IsNotMessageType())
+        {
+            return default;
+        }
+
+        var text = turnContext?.Activity?.Value is not null ? turnContext?.Activity?.Value.ToString() : turnContext?.Activity?.Text;
+        return CardActionValueJson.DeserializeOrAbsent(text).Map(GetId);
+
+        static Guid GetId(CardActionValueJson valueJson)
+            =>
+            valueJson.Id;
+    }
 
     private static Optional<Guid> ParseCardActionValueOrAbsent(this ITurnContext? turnContext)
-        =>
-        CardActionValueJson.DeserializeOrAbsent(
+    {
+        return CardActionValueJson.DeserializeOrAbsent(
             turnContext?.Activity?.Value is not null ? turnContext?.Activity?.Value.ToString() : turnContext?.Activity?.Text)
         .Map(
             valueJson => valueJson.Id);
+    }
 }

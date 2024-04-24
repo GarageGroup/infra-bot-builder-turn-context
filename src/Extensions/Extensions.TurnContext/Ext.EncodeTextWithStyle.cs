@@ -15,7 +15,7 @@ public static partial class TurnContextExtensions
 
         if (turnContext is null || turnContext.IsNotTelegramChannel())
         {
-            return InnerBuildTextWithStyle(source ?? string.Empty, style);
+            return InnerBuildTextWithStyle(source, style);
         }
 
         var encodedString = source;
@@ -26,10 +26,14 @@ public static partial class TurnContextExtensions
             encodedString = regItem.Key.Replace(encodedString, regItem.Value);
         }
 
-        encodedString = new(encodedString.Where(c => char.IsControl(c) is false).ToArray());
+        encodedString = new(encodedString.Where(IsNotControl).ToArray());
         return InnerBuildTextWithStyle(encodedString, style);
+
+        static bool IsNotControl(char symbol)
+            =>
+            char.IsControl(symbol) is false;
     }
-    
+
     private static string InnerBuildTextWithStyle(string text, BotTextStyle style)
         =>
         style switch
